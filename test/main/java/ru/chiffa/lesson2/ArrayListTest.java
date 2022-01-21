@@ -153,7 +153,6 @@ public class ArrayListTest {
         List<Integer> list = prepareList(10);
 
         assertArrayEquals(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, list.toArray());
-        //todo toArray(t1)
     }
 
     @Test
@@ -171,9 +170,6 @@ public class ArrayListTest {
         assertThrows(NullPointerException.class, () -> {list.retainAll(Arrays.asList(0, null));});
         assertThrows(NullPointerException.class, () -> {list.retainAll(null);});
     }
-
-    //iterator
-    //listIterator
 
     private List<Integer> prepareList(int size) {
         List<Integer> list = new ArrayList<>();
