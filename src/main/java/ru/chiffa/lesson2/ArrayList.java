@@ -220,13 +220,15 @@ public class ArrayList<T> implements List<T> {
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         checkIndex(fromIndex);
-        checkIndex(toIndex);
+        if (toIndex < 0) {
+            throw new IndexOutOfBoundsException("toIndex can't be less than 0");
+        }
 
         if (fromIndex > toIndex) {
             throw new IllegalArgumentException("Value of fromIndex can't be more than value of toIndex");
         }
 
-        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, toIndex));
+        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, toIndex >= size ? size - 1 : toIndex));
     }
 
     private void checkAddingIndex(int index) {

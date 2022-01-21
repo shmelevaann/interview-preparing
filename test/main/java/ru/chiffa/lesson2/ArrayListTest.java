@@ -119,11 +119,12 @@ public class ArrayListTest {
     public void subListTest() {
         List<Integer> list = prepareList(10);
 
+        assertIterableEquals(Arrays.asList(1, 2), list.subList(1, 3));
+        assertIterableEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9), list.subList(1, 20));
         assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(-1, 2);});
-        assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(0, 20);});
+        assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(20, 40);});
         assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(0, list.size());});
         assertThrows(IllegalArgumentException.class, () ->{list.subList(8, 0);});
-        assertIterableEquals(Arrays.asList(1, 2), list.subList(1, 3));
     }
 
     @Test
