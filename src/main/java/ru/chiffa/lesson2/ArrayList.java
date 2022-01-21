@@ -134,7 +134,7 @@ public class ArrayList<T> implements List<T> {
 
     private void moveElements(int index, int offset) {
         if (index != size) {
-            System.arraycopy(array, index, array, index + offset, size - index - 1);
+            System.arraycopy(array, index, array, index + offset, size - index);
         }
     }
 
@@ -167,12 +167,12 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return subtractOrIntersection(c, false);
+        return subtractOrIntersection(c, true);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return subtractOrIntersection(c, true);
+        return subtractOrIntersection(c, false);
     }
 
     private boolean subtractOrIntersection(Collection<?> c, boolean isSubtract) {
@@ -228,7 +228,7 @@ public class ArrayList<T> implements List<T> {
             throw new IllegalArgumentException("Value of fromIndex can't be more than value of toIndex");
         }
 
-        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, toIndex >= size ? size - 1 : toIndex));
+        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, toIndex >= size ? size - 1 : toIndex + 1));
     }
 
     private void checkAddingIndex(int index) {
@@ -270,7 +270,7 @@ public class ArrayList<T> implements List<T> {
 
 
     private class ArrayListIterator implements ListIterator<T> {
-        private int index = 0;
+        private int index = -1;
         private IteratorState state = IteratorState.UNMODIFIABLE;
 
         private ArrayListIterator() {
