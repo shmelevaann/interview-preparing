@@ -228,7 +228,7 @@ public class ArrayList<T> implements List<T> {
             throw new IllegalArgumentException("Value of fromIndex can't be more than value of toIndex");
         }
 
-        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, toIndex >= size ? size - 1 : toIndex + 1));
+        return new ArrayList<T>(Arrays.copyOfRange(array, fromIndex, Math.min(toIndex, size)));
     }
 
     private void checkAddingIndex(int index) {

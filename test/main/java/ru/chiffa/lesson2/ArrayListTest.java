@@ -123,7 +123,6 @@ public class ArrayListTest {
         assertIterableEquals(Arrays.asList(1, 2), list.subList(1, 3));
         assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(-1, 2);});
         assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(20, 40);});
-        assertThrows(IndexOutOfBoundsException.class, () ->{list.subList(0, list.size());});
         assertThrows(IllegalArgumentException.class, () ->{list.subList(8, 0);});
     }
 
