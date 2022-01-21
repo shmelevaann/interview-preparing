@@ -76,7 +76,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return Arrays.copyOfRange(array, 0, size - 1);
+        return Arrays.copyOfRange(array, 0, size);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class ArrayList<T> implements List<T> {
         checkIndex(fromIndex);
         checkIndex(toIndex);
 
-        if (toIndex > fromIndex) {
+        if (fromIndex > toIndex) {
             throw new IllegalArgumentException("Value of fromIndex can't be more than value of toIndex");
         }
 
@@ -274,7 +274,7 @@ public class ArrayList<T> implements List<T> {
         private ArrayListIterator() {
         }
 
-        private ArrayListIterator (int index) {
+        private ArrayListIterator(int index) {
             this.index = index;
         }
 
